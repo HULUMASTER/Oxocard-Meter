@@ -21,7 +21,9 @@ Adafruit_SHT4x sht4 = Adafruit_SHT4x();
 
 void setup() {
   Serial.begin(115200);
-  while (!Serial) { delay(10); } // Wait for serial console to open!
+  if (Serial) {
+    while (!Serial) { delay(10); }
+  }
 
   Serial.println("SGP40 test with SHT31 compensation");
 
@@ -94,5 +96,5 @@ void loop() {
   mqttClient.print(jsonBuffer);
   mqttClient.endMessage();
 
-  delay(1000);
+  delay(1 * 1000);
 }
