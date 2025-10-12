@@ -23,8 +23,19 @@ services:
     env_file:
       - .env
 
+  node-red:
+    image: nodered/node-red:latest-22
+    environment:
+      - TZ=Europe/Zurich
+    ports:
+      - "1880:1880"
+    volumes:
+      - node-red_data:/data
+
+
 volumes:
   mosquitto_data:
   mosquitto_log:
   influxdb_data:
   influxdb_config:
+  node-red_data:
